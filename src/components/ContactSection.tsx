@@ -12,17 +12,48 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We will respond within 24 hours.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+
+    const payload = {
+      First_Name: data.get("firstName") as string,
+      Last_Name: data.get("lastName") as string,
+      Email: data.get("email") as string,
+      Phone: data.get("phone") as string,
+      Description: data.get("message") as string,
+      Lead_Source: "Website",
+      Lead_Status: "Intake",
+    };
+
+    try {
+      const params = new URLSearchParams({
+        auth_type: "apikey",
+        zapikey: "1003.123ce72d66630ce49b8bc65f668178d0.a69b4efbf1bbc9eae15087b1f4b9cbe8",
+        ...payload,
+      });
+
+      const res = await fetch(
+        `/api/zoho/crm/v7/functions/get/actions/execute?${params.toString()}`,
+        { method: "POST" }
+      );
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      toast({
+        title: "Message Sent",
+        description: "Thank you for contacting us. We will respond within 24 hours.",
+      });
+      form.reset();
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or call us directly at 801 424 5280.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -35,8 +66,8 @@ const ContactSection = () => {
               Contact Aaron About Your Case
             </h2>
             <p className="text-body text-primary-foreground/80 mb-12 leading-relaxed">
-              With over 15 years of experience, Millar Legal will guide you through the legal process, 
-              all the while committed to delivering the best result possible. We respond to your individual 
+              With over 15 years of experience, Millar Legal will guide you through the legal process,
+              all the while committed to delivering the best result possible. We respond to your individual
               needs so you are empowered to make informed decisions that protect your rights.
             </p>
 
@@ -76,7 +107,7 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="bg-card p-8 lg:p-10 shadow-strong">
             <h3 className="font-heading text-2xl font-semibold text-foreground mb-6">
-              Schedule a Consultation
+              Contact Us
             </h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
