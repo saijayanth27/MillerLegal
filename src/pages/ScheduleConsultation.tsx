@@ -81,8 +81,8 @@ const ScheduleConsultation = () => {
                 if (Bookings) {
                   Bookings.linkModal({
                     url: "https://user5-demo525.zohobookings.com/portal-embed#/4755240000000260002",
-                    width: "90%",
-                    height: "85%",
+                    width: "100%",
+                    height: "100%",
                   })();
                 }
               }}
