@@ -51,7 +51,7 @@ const ScheduleConsultation = () => {
           <div className="grid sm:grid-cols-2 gap-6">
             {/* Step 1 */}
             <a
-              href="https://survey.zohopublic.com/zs/vmBnqj"
+              href="https://forms.zohopublic.com/demo5gkblabs/form/MillardemoForm/formperma/mb1Nx1RYHlfayPkcVcH8EujY7H40IYFKxiq9OIkuA3g"
               target="_blank"
               rel="noopener noreferrer"
               className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center bg-card shadow-soft"
