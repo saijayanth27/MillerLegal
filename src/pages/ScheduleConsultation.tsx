@@ -75,11 +75,18 @@ const ScheduleConsultation = () => {
             </a>
 
             {/* Step 2 */}
-            <a
-              href="/book-consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center bg-card shadow-soft"
+            <button
+              onClick={() => {
+                const Bookings = (window as any).Bookings;
+                if (Bookings) {
+                  Bookings.linkModal({
+                    url: "https://user5-demo525.zohobookings.com/portal-embed#/4755240000000260002",
+                    width: "90%",
+                    height: "85%",
+                  })();
+                }
+              }}
+              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center bg-card shadow-soft w-full cursor-pointer"
             >
               <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
                 <CalendarDays className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
@@ -97,7 +104,7 @@ const ScheduleConsultation = () => {
               <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
                 Book Appointment →
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </section>
