@@ -47,7 +47,7 @@ const Header = () => {
               <span>801 424 5280</span>
             </a>
             <Button variant="default" size="sm" asChild>
-              <a href="#contact">Schedule Consultation</a>
+              <a href="/schedule-a-consultation">Schedule Consultation</a>
             </Button>
           </div>
 
@@ -78,6 +78,13 @@ const Header = () => {
               <a href="tel:8014245280" className="flex items-center gap-2 text-primary font-medium px-2">
                 <Phone className="w-4 h-4" />
                 <span>801 424 5280</span>
+              </a>
+              <a
+                href="/schedule-a-consultation"
+                onClick={() => setIsMenuOpen(false)}
+                className="mx-2 mt-2 bg-primary text-primary-foreground text-sm font-medium text-center py-2.5 px-4"
+              >
+                Schedule Consultation
               </a>
             </nav>
           </div>
