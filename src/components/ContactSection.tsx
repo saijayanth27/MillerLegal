@@ -24,6 +24,7 @@ const ContactSection = () => {
       Description: data.get("message") as string,
       Lead_Source: "Website",
       Lead_Status: "Intake",
+      Source: "Marketing",
     };
 
     try {

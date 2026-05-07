@@ -5,15 +5,13 @@ export default async function handler(req, res) {
 
   const payload = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-  const params = new URLSearchParams({
-    auth_type: "apikey",
-    zapikey: "1003.65dfa4d29d3227093f32ace76bf71471.75ed2b039da2f1d997787cc328a14c16",
-    ...payload,
-  });
-
   const zohoRes = await fetch(
-    `https://www.zohoapis.com/crm/v7/functions/millerlegalwebsite/actions/execute?${params.toString()}`,
-    { method: "POST" }
+    `https://www.zohoapis.com/crm/v7/functions/get/actions/execute?auth_type=apikey&zapikey=1003.123ce72d66630ce49b8bc65f668178d0.a69b4efbf1bbc9eae15087b1f4b9cbe8`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }
   );
 
   const data = await zohoRes.json().catch(() => ({}));
