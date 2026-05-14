@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Phone, Mail, Star, FileText, CalendarDays } from "lucide-react";
+import { Phone, Mail, Star, FileText } from "lucide-react";
 
 const testimonials = [
   {
@@ -37,76 +37,27 @@ const ScheduleConsultation = () => {
         </div>
       </section>
 
-      {/* Two Steps */}
+      {/* Intake Form */}
       <section className="py-20 bg-background">
-        <div className="container-narrow">
-          <div className="text-center mb-12">
-            <h2 className="heading-display text-3xl sm:text-4xl text-foreground mb-4">
-              Book Your Appointment
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Millar Legal offers one-hour telephone consultations. Phone consultations are just as
-              attentive and thorough as in-person meetings — and far more convenient.
+        <div className="container-narrow flex justify-center">
+          <button
+            onClick={() => navigate("/intake-form")}
+            className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center cursor-pointer shadow-soft bg-card w-full max-w-md"
+          >
+            <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
+              <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+            </div>
+            <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+              Complete Intake Form
+            </h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              Please complete our intake form so Aaron can review your case details in advance
+              and make the most of your appointment time.
             </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            {/* Step 1 */}
-            <button
-              onClick={() => navigate("/intake-form")}
-              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center w-full cursor-pointer shadow-soft bg-card"
-            >
-              <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
-                <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-                Step 1
-              </span>
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                Complete Intake Form
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Please complete our intake form so Aaron can review your case details in advance
-                and make the most of your appointment time.
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
-                Open Intake Form →
-              </span>
-            </button>
-
-            {/* Step 2 */}
-            <button
-              onClick={() => {
-                const Bookings = (window as any).Bookings;
-                if (Bookings) {
-                  Bookings.linkModal({
-                    url: "https://user5-demo525.zohobookings.com/portal-embed#/4755240000000260002",
-                    width: "100%",
-                    height: "100%",
-                  })();
-                }
-              }}
-              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center bg-card shadow-soft w-full cursor-pointer"
-            >
-              <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
-                <CalendarDays className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-                Step 2
-              </span>
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                Book Phone Consultation
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Once your intake form is submitted, pick a date and time for your 60-minute
-                phone strategy session with Aaron. Fee: $425.
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
-                Book Appointment →
-              </span>
-            </button>
-          </div>
-
+            <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
+              Open Intake Form →
+            </span>
+          </button>
         </div>
       </section>
 
