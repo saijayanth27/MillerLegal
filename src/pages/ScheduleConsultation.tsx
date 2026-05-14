@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Phone, Mail, Star, FileText, CalendarDays, ChevronUp } from "lucide-react";
+import { Phone, Mail, Star, FileText, CalendarDays } from "lucide-react";
 
 const testimonials = [
   {
@@ -19,7 +19,7 @@ const testimonials = [
 ];
 
 const ScheduleConsultation = () => {
-  const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -53,24 +53,11 @@ const ScheduleConsultation = () => {
           <div className="grid sm:grid-cols-2 gap-6">
             {/* Step 1 */}
             <button
-              onClick={() => {
-                setShowForm((prev) => !prev);
-                if (!showForm) {
-                  setTimeout(() => {
-                    document.getElementById("intake-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }, 100);
-                }
-              }}
-              className={`group border-2 transition-all duration-200 p-10 flex flex-col items-center text-center w-full cursor-pointer shadow-soft ${
-                showForm ? "border-primary bg-primary/5" : "border-border hover:border-primary bg-card"
-              }`}
+              onClick={() => navigate("/intake-form")}
+              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center w-full cursor-pointer shadow-soft bg-card"
             >
-              <div className={`w-14 h-14 flex items-center justify-center mb-5 transition-colors ${
-                showForm ? "bg-primary" : "bg-muted group-hover:bg-primary"
-              }`}>
-                <FileText className={`w-6 h-6 transition-colors ${
-                  showForm ? "text-primary-foreground" : "text-muted-foreground group-hover:text-primary-foreground"
-                }`} />
+              <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
+                <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
               </div>
               <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
                 Step 1
@@ -82,10 +69,8 @@ const ScheduleConsultation = () => {
                 Please complete our intake form so Aaron can review your case details in advance
                 and make the most of your appointment time.
               </p>
-              <span className={`inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide transition-colors ${
-                showForm ? "text-primary" : "text-muted-foreground group-hover:text-primary"
-              }`}>
-                {showForm ? <><ChevronUp className="w-4 h-4" /> Close Form</> : "Open Intake Form →"}
+              <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
+                Open Intake Form →
               </span>
             </button>
 
@@ -122,22 +107,6 @@ const ScheduleConsultation = () => {
             </button>
           </div>
 
-          {/* Intake Form iframe */}
-          {showForm && (
-            <div id="intake-form" className="mt-10 border border-border shadow-medium scroll-mt-28">
-              <div className="px-6 py-4 bg-primary">
-                <h3 className="text-primary-foreground font-heading font-semibold text-lg">
-                  Step 1 — Intake Form
-                </h3>
-              </div>
-              <iframe
-                src="https://forms.zohopublic.com/millarlegal1/form/LegalIntakeForm1/formperma/2wU2Pje4H6PEwhqeF3awTufUG4fG5YrXaq772--Ypto"
-                style={{ height: "700px", width: "100%", display: "block", border: "none" }}
-                allow="geolocation"
-                title="Intake Form"
-              />
-            </div>
-          )}
         </div>
       </section>
 
