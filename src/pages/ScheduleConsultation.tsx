@@ -37,27 +37,47 @@ const ScheduleConsultation = () => {
         </div>
       </section>
 
-      {/* Intake Form */}
+      {/* Intake Forms */}
       <section className="py-20 bg-background">
-        <div className="container-narrow flex justify-center">
-          <button
-            onClick={() => navigate("/intake-form")}
-            className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center cursor-pointer shadow-soft bg-card w-full max-w-md"
-          >
-            <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
-              <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
-            </div>
-            <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-              Complete Intake Form
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Please complete our intake form so Aaron can review your case details in advance
-              and make the most of your appointment time.
-            </p>
-            <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
-              Open Intake Form →
-            </span>
-          </button>
+        <div className="container-narrow">
+          <div className="grid md:grid-cols-2 gap-8">
+            <button
+              onClick={() => navigate("/intake-form")}
+              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center cursor-pointer shadow-soft bg-card"
+            >
+              <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
+                <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+              </div>
+              <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+                General Intake Form
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                Please complete our general intake form so Aaron can review your case details in advance
+                and make the most of your appointment time.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
+                Open Form →
+              </span>
+            </button>
+
+            <button
+              onClick={() => navigate("/postup-intake-form")}
+              className="group border-2 border-border hover:border-primary transition-all duration-200 p-10 flex flex-col items-center text-center cursor-pointer shadow-soft bg-card"
+            >
+              <div className="w-14 h-14 bg-muted group-hover:bg-primary flex items-center justify-center mb-5 transition-colors">
+                <FileText className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+              </div>
+              <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+                Prenup/Postnup Intake Form
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                Complete this form if you're seeking assistance with prenuptial or postnuptial agreements.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground group-hover:text-primary transition-colors">
+                Open Form →
+              </span>
+            </button>
+          </div>
         </div>
       </section>
 

@@ -3,11 +3,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  const apiKey = process.env.VITE_ZOHO_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: "API key not configured" });
+  }
+
   const payload = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
   const params = new URLSearchParams({
     auth_type: "apikey",
-    zapikey: "1003.123ce72d66630ce49b8bc65f668178d0.a69b4efbf1bbc9eae15087b1f4b9cbe8",
+    zapikey: apiKey,
     ...payload,
   });
 
