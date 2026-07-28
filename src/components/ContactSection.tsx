@@ -13,7 +13,7 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const form = e.target as HTMLFormElement;
+    const form = e.currentTarget;
     const data = new FormData(form);
 
     const payload = {
